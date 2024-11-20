@@ -26,10 +26,91 @@ public class home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jlblwelcome = new javax.swing.JLabel();
+        jlbladmin = new javax.swing.JLabel();
+        userpic = new javax.swing.JLabel();
+        jlblreports = new javax.swing.JLabel();
+        jlblhome = new javax.swing.JLabel();
+        jlbldonor = new javax.swing.JLabel();
+        jlblcampaigns = new javax.swing.JLabel();
+        jlbldonations = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jlblwelcome.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
+        jlblwelcome.setForeground(new java.awt.Color(153, 153, 153));
+        jlblwelcome.setText(" WELCOME ,");
+        jPanel1.add(jlblwelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 40));
+
+        jlbladmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jlbladmin.setForeground(new java.awt.Color(153, 153, 153));
+        jlbladmin.setText("Admin");
+        jPanel1.add(jlbladmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 90, 30));
+
+        userpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_8742495.png"))); // NOI18N
+        userpic.setText("jLabel2");
+        jPanel1.add(userpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, 140));
+
+        jlblreports.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlblreports.setForeground(new java.awt.Color(204, 204, 204));
+        jlblreports.setText("Reports");
+        jPanel1.add(jlblreports, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 150, 30));
+
+        jlblhome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlblhome.setForeground(new java.awt.Color(204, 204, 204));
+        jlblhome.setText("Home");
+        jPanel1.add(jlblhome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 150, 30));
+
+        jlbldonor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbldonor.setForeground(new java.awt.Color(204, 204, 204));
+        jlbldonor.setText("Donors");
+        jPanel1.add(jlbldonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 150, 30));
+
+        jlblcampaigns.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlblcampaigns.setForeground(new java.awt.Color(204, 204, 204));
+        jlblcampaigns.setText("Campaigns");
+        jPanel1.add(jlblcampaigns, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 150, 30));
+
+        jlbldonations.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jlbldonations.setForeground(new java.awt.Color(204, 204, 204));
+        jlbldonations.setText("Donations");
+        jPanel1.add(jlbldonations, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 150, 30));
+
+        jButton1.setBackground(new java.awt.Color(204, 204, 204));
+        jButton1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 51, 102));
+        jButton1.setText("Logout ");
+        jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, -1, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 580));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/donation-money-vector-flat-illustration_1.jpg"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 573, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 27, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -70,5 +151,17 @@ public class home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jlbladmin;
+    private javax.swing.JLabel jlblcampaigns;
+    private javax.swing.JLabel jlbldonations;
+    private javax.swing.JLabel jlbldonor;
+    private javax.swing.JLabel jlblhome;
+    private javax.swing.JLabel jlblreports;
+    private javax.swing.JLabel jlblwelcome;
+    private javax.swing.JLabel userpic;
     // End of variables declaration//GEN-END:variables
 }
