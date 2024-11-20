@@ -48,13 +48,15 @@ public class campaigndetails extends javax.swing.JFrame {
         txtcampaignname2 = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtdescription = new javax.swing.JTextArea();
-        btnclear = new javax.swing.JButton();
         btninsert = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
         btnupdate = new javax.swing.JButton();
+        btnclear1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        btnexit = new javax.swing.JButton();
+        lblworldvision = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,18 +64,18 @@ public class campaigndetails extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+            .addGap(0, 473, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 102, Short.MAX_VALUE)
+            .addGap(0, 21, Short.MAX_VALUE)
         );
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setForeground(new java.awt.Color(204, 204, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelsearch.setBackground(new java.awt.Color(204, 204, 204));
+        panelsearch.setBackground(new java.awt.Color(153, 153, 153));
         panelsearch.setBorder(javax.swing.BorderFactory.createTitledBorder("Search"));
         panelsearch.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -95,7 +97,7 @@ public class campaigndetails extends javax.swing.JFrame {
         lblstartdate.setText("Start Date");
         jPanel2.add(lblstartdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
         jPanel3.setForeground(new java.awt.Color(204, 204, 204));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -131,7 +133,7 @@ public class campaigndetails extends javax.swing.JFrame {
         jPanel3.add(lblenddate, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, -1, -1));
         jPanel3.add(txttargetamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 260, -1));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, -1));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, -1));
         jPanel2.add(txtcampaignname2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 260, -1));
 
         txtdescription.setColumns(20);
@@ -140,18 +142,7 @@ public class campaigndetails extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 260, 70));
 
-        btnclear.setBackground(new java.awt.Color(204, 204, 204));
-        btnclear.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
-        btnclear.setForeground(new java.awt.Color(0, 51, 153));
-        btnclear.setText("CLEAR");
-        btnclear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnclearActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnclear, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 550, 110, -1));
-
-        btninsert.setBackground(new java.awt.Color(204, 204, 204));
+        btninsert.setBackground(new java.awt.Color(153, 153, 153));
         btninsert.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         btninsert.setForeground(new java.awt.Color(0, 51, 153));
         btninsert.setText("INSERT");
@@ -162,7 +153,7 @@ public class campaigndetails extends javax.swing.JFrame {
         });
         jPanel2.add(btninsert, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 120, -1));
 
-        btndelete.setBackground(new java.awt.Color(204, 204, 204));
+        btndelete.setBackground(new java.awt.Color(153, 153, 153));
         btndelete.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         btndelete.setForeground(new java.awt.Color(0, 51, 153));
         btndelete.setText("DELETE");
@@ -173,7 +164,7 @@ public class campaigndetails extends javax.swing.JFrame {
         });
         jPanel2.add(btndelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, 120, -1));
 
-        btnupdate.setBackground(new java.awt.Color(204, 204, 204));
+        btnupdate.setBackground(new java.awt.Color(153, 153, 153));
         btnupdate.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
         btnupdate.setForeground(new java.awt.Color(0, 51, 153));
         btnupdate.setText("UPDATE");
@@ -184,7 +175,19 @@ public class campaigndetails extends javax.swing.JFrame {
         });
         jPanel2.add(btnupdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 520, 110, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        btnclear1.setBackground(new java.awt.Color(153, 153, 153));
+        btnclear1.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
+        btnclear1.setForeground(new java.awt.Color(0, 51, 153));
+        btnclear1.setText("CLEAR");
+        btnclear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnclear1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnclear1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 550, 110, -1));
+
+        tbl1.setBackground(new java.awt.Color(204, 204, 204));
+        tbl1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -197,12 +200,23 @@ public class campaigndetails extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl1);
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 153));
         jLabel1.setText("Campaign Details");
+
+        btnexit.setBackground(new java.awt.Color(204, 204, 204));
+        btnexit.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        btnexit.setForeground(new java.awt.Color(0, 51, 102));
+        btnexit.setText("Exit");
+        btnexit.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        lblworldvision.setBackground(new java.awt.Color(0, 51, 102));
+        lblworldvision.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblworldvision.setForeground(new java.awt.Color(0, 51, 102));
+        lblworldvision.setText(" WorldVision SriLanka");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -215,19 +229,29 @@ public class campaigndetails extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(185, 185, 185)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnexit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblworldvision, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(178, 178, 178))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(lblworldvision)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addComponent(btnexit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -244,10 +268,6 @@ public class campaigndetails extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtsearch1ActionPerformed
 
-    private void btnclearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnclearActionPerformed
-
     private void btninsertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btninsertActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btninsertActionPerformed
@@ -259,6 +279,10 @@ public class campaigndetails extends javax.swing.JFrame {
     private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void btnclear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnclear1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnclear1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -296,8 +320,9 @@ public class campaigndetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnclear;
+    private javax.swing.JButton btnclear1;
     private javax.swing.JButton btndelete;
+    private javax.swing.JButton btnexit;
     private javax.swing.JButton btninsert;
     private javax.swing.JButton btnupdate;
     private com.toedter.calendar.JDateChooser enddate;
@@ -308,7 +333,6 @@ public class campaigndetails extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblcampaigname;
     private javax.swing.JLabel lblcampaigname1;
     private javax.swing.JLabel lbldescription;
@@ -316,9 +340,11 @@ public class campaigndetails extends javax.swing.JFrame {
     private javax.swing.JLabel lblenddate;
     private javax.swing.JLabel lblstartdate;
     private javax.swing.JLabel lbltargetamount;
+    private javax.swing.JLabel lblworldvision;
     private javax.swing.JPanel panelsearch;
     private javax.swing.JPanel panelsearch1;
     private com.toedter.calendar.JDateChooser startdate;
+    private javax.swing.JTable tbl1;
     private javax.swing.JTextField txtcampaignname1;
     private javax.swing.JTextField txtcampaignname2;
     private javax.swing.JTextArea txtdescription;

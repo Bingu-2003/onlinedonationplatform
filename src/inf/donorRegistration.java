@@ -48,6 +48,9 @@ public class donorRegistration extends javax.swing.JFrame {
         btnregister = new javax.swing.JButton();
         picdonation = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblcountry1 = new javax.swing.JLabel();
+        rbtnfemale = new javax.swing.JRadioButton();
+        rbtnmale1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,16 +81,16 @@ public class donorRegistration extends javax.swing.JFrame {
         jPanel1.add(lblfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 70, 30));
 
         lblcountry.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblcountry.setText("Country");
-        jPanel1.add(lblcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 70, 30));
+        lblcountry.setText("Gender");
+        jPanel1.add(lblcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 70, 30));
 
         lblemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblemail.setText("Email");
-        jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 70, 30));
+        jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 70, 30));
 
         lblphoneno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblphoneno.setText("Phone Number");
-        jPanel1.add(lblphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 130, 30));
+        jPanel1.add(lblphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 130, 30));
 
         txtflastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -101,21 +104,21 @@ public class donorRegistration extends javax.swing.JFrame {
                 txtcountryActionPerformed(evt);
             }
         });
-        jPanel1.add(txtcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 230, -1));
+        jPanel1.add(txtcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 230, -1));
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
-        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 230, -1));
+        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 230, -1));
 
         txtphoneno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtphonenoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 230, -1));
+        jPanel1.add(txtphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 230, -1));
         jPanel1.add(txtfirstname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 230, -1));
 
         checkboxcash.setText("Cash");
@@ -168,6 +171,16 @@ public class donorRegistration extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Donor Registration Form");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 210, 40));
+
+        lblcountry1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        lblcountry1.setText("Country");
+        jPanel1.add(lblcountry1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 70, 30));
+
+        rbtnfemale.setText("Female");
+        jPanel1.add(rbtnfemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 60, -1));
+
+        rbtnmale1.setText("Male");
+        jPanel1.add(rbtnmale1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 60, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -251,6 +264,7 @@ public class donorRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblcountry;
+    private javax.swing.JLabel lblcountry1;
     private javax.swing.JLabel lblemail;
     private javax.swing.JLabel lblfirstname;
     private javax.swing.JLabel lbllastname;
@@ -259,6 +273,8 @@ public class donorRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel lblphoneno;
     private javax.swing.JLabel lblworldvision;
     private javax.swing.JLabel picdonation;
+    private javax.swing.JRadioButton rbtnfemale;
+    private javax.swing.JRadioButton rbtnmale1;
     private javax.swing.JTextField txtcountry;
     private javax.swing.JTextField txtemail;
     private javax.swing.JTextField txtfirstname1;
