@@ -30,7 +30,6 @@ public class donorRegistration extends javax.swing.JFrame {
         lblworldvision = new javax.swing.JLabel();
         lbllastname = new javax.swing.JLabel();
         lblname = new javax.swing.JLabel();
-        lblpaymentpreferences = new javax.swing.JLabel();
         lblfirstname = new javax.swing.JLabel();
         lblcountry = new javax.swing.JLabel();
         lblemail = new javax.swing.JLabel();
@@ -40,10 +39,6 @@ public class donorRegistration extends javax.swing.JFrame {
         txtemail = new javax.swing.JTextField();
         txtphoneno = new javax.swing.JTextField();
         txtfirstname1 = new javax.swing.JTextField();
-        checkboxcash = new javax.swing.JCheckBox();
-        checkboxewallet = new javax.swing.JCheckBox();
-        checkboxbank = new javax.swing.JCheckBox();
-        checkboxcard = new javax.swing.JCheckBox();
         btncancel = new javax.swing.JButton();
         btnregister = new javax.swing.JButton();
         picdonation = new javax.swing.JLabel();
@@ -72,25 +67,21 @@ public class donorRegistration extends javax.swing.JFrame {
         lblname.setText("Name");
         jPanel1.add(lblname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 70, 30));
 
-        lblpaymentpreferences.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblpaymentpreferences.setText("Payment Preferences");
-        jPanel1.add(lblpaymentpreferences, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, 130, 30));
-
         lblfirstname.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblfirstname.setText("First Name");
         jPanel1.add(lblfirstname, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 70, 30));
 
         lblcountry.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblcountry.setText("Gender");
-        jPanel1.add(lblcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 70, 30));
+        jPanel1.add(lblcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 70, 30));
 
         lblemail.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblemail.setText("Email");
-        jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 70, 30));
+        jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 70, 30));
 
         lblphoneno.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         lblphoneno.setText("Phone Number");
-        jPanel1.add(lblphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 130, 30));
+        jPanel1.add(lblphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 130, 30));
 
         txtflastname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,44 +95,22 @@ public class donorRegistration extends javax.swing.JFrame {
                 txtcountryActionPerformed(evt);
             }
         });
-        jPanel1.add(txtcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 230, -1));
+        jPanel1.add(txtcountry, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 230, -1));
 
         txtemail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtemailActionPerformed(evt);
             }
         });
-        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 230, -1));
+        jPanel1.add(txtemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 230, -1));
 
         txtphoneno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtphonenoActionPerformed(evt);
             }
         });
-        jPanel1.add(txtphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 230, -1));
+        jPanel1.add(txtphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 230, -1));
         jPanel1.add(txtfirstname1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 230, -1));
-
-        checkboxcash.setText("Cash");
-        jPanel1.add(checkboxcash, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, -1, -1));
-
-        checkboxewallet.setText("E-wallets");
-        checkboxewallet.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkboxewalletActionPerformed(evt);
-            }
-        });
-        jPanel1.add(checkboxewallet, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 510, -1, 20));
-
-        checkboxbank.setText("Bank Deposit");
-        jPanel1.add(checkboxbank, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 490, -1, 20));
-
-        checkboxcard.setText("credit/Debit card");
-        checkboxcard.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkboxcardActionPerformed(evt);
-            }
-        });
-        jPanel1.add(checkboxcard, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 490, -1, 20));
 
         btncancel.setBackground(new java.awt.Color(0, 51, 102));
         btncancel.setFont(new java.awt.Font("Verdana Pro Semibold", 1, 12)); // NOI18N
@@ -152,7 +121,7 @@ public class donorRegistration extends javax.swing.JFrame {
                 btncancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 90, 30));
+        jPanel1.add(btncancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, 90, 30));
 
         btnregister.setBackground(new java.awt.Color(0, 51, 102));
         btnregister.setFont(new java.awt.Font("Verdana Pro Semibold", 1, 12)); // NOI18N
@@ -163,7 +132,7 @@ public class donorRegistration extends javax.swing.JFrame {
                 btnregisterActionPerformed(evt);
             }
         });
-        jPanel1.add(btnregister, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 560, 90, 30));
+        jPanel1.add(btnregister, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 540, 90, 30));
 
         picdonation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/images (1).jpg"))); // NOI18N
         jPanel1.add(picdonation, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 0, 230, 160));
@@ -173,14 +142,14 @@ public class donorRegistration extends javax.swing.JFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 210, 40));
 
         lblcountry1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        lblcountry1.setText("Country");
-        jPanel1.add(lblcountry1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 70, 30));
+        lblcountry1.setText("Address");
+        jPanel1.add(lblcountry1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 70, 30));
 
         rbtnfemale.setText("Female");
-        jPanel1.add(rbtnfemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 60, -1));
+        jPanel1.add(rbtnfemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 60, -1));
 
         rbtnmale1.setText("Male");
-        jPanel1.add(rbtnmale1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 60, -1));
+        jPanel1.add(rbtnmale1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 60, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -202,14 +171,6 @@ public class donorRegistration extends javax.swing.JFrame {
     private void txtcountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcountryActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtcountryActionPerformed
-
-    private void checkboxewalletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxewalletActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkboxewalletActionPerformed
-
-    private void checkboxcardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkboxcardActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkboxcardActionPerformed
 
     private void btncancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelActionPerformed
         // TODO add your handling code here:
@@ -258,10 +219,6 @@ public class donorRegistration extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btncancel;
     private javax.swing.JButton btnregister;
-    private javax.swing.JCheckBox checkboxbank;
-    private javax.swing.JCheckBox checkboxcard;
-    private javax.swing.JCheckBox checkboxcash;
-    private javax.swing.JCheckBox checkboxewallet;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblcountry;
@@ -270,7 +227,6 @@ public class donorRegistration extends javax.swing.JFrame {
     private javax.swing.JLabel lblfirstname;
     private javax.swing.JLabel lbllastname;
     private javax.swing.JLabel lblname;
-    private javax.swing.JLabel lblpaymentpreferences;
     private javax.swing.JLabel lblphoneno;
     private javax.swing.JLabel lblworldvision;
     private javax.swing.JLabel picdonation;
