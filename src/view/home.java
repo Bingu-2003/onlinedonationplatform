@@ -30,12 +30,12 @@ public class home extends javax.swing.JFrame {
         jlblwelcome = new javax.swing.JLabel();
         jlbladmin = new javax.swing.JLabel();
         userpic = new javax.swing.JLabel();
-        jlblreports = new javax.swing.JLabel();
-        jlblhome = new javax.swing.JLabel();
-        jlbldonor = new javax.swing.JLabel();
-        jlblcampaigns = new javax.swing.JLabel();
-        jlbldonations = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        btnReports = new javax.swing.JButton();
+        btnProjects = new javax.swing.JButton();
+        btnHome = new javax.swing.JButton();
+        btnDonors = new javax.swing.JButton();
+        btnDonations = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -60,37 +60,68 @@ public class home extends javax.swing.JFrame {
         userpic.setText("jLabel2");
         jPanel1.add(userpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, 140));
 
-        jlblreports.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jlblreports.setForeground(new java.awt.Color(204, 204, 204));
-        jlblreports.setText("Reports");
-        jPanel1.add(jlblreports, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 150, 30));
-
-        jlblhome.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jlblhome.setForeground(new java.awt.Color(204, 204, 204));
-        jlblhome.setText("Home");
-        jPanel1.add(jlblhome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 150, 30));
-
-        jlbldonor.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jlbldonor.setForeground(new java.awt.Color(204, 204, 204));
-        jlbldonor.setText("Donors");
-        jPanel1.add(jlbldonor, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 150, 30));
-
-        jlblcampaigns.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jlblcampaigns.setForeground(new java.awt.Color(204, 204, 204));
-        jlblcampaigns.setText("Campaigns");
-        jPanel1.add(jlblcampaigns, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 150, 30));
-
-        jlbldonations.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jlbldonations.setForeground(new java.awt.Color(204, 204, 204));
-        jlbldonations.setText("Donations");
-        jPanel1.add(jlbldonations, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 150, 30));
-
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 51, 102));
         jButton1.setText("Logout ");
         jButton1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, -1, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, -1, 30));
+
+        btnReports.setBackground(new java.awt.Color(0, 51, 102));
+        btnReports.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnReports.setForeground(new java.awt.Color(153, 153, 153));
+        btnReports.setText("Reports");
+        btnReports.setBorder(null);
+        jPanel1.add(btnReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 240, 40));
+
+        btnProjects.setBackground(new java.awt.Color(0, 51, 102));
+        btnProjects.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnProjects.setForeground(new java.awt.Color(153, 153, 153));
+        btnProjects.setText("Projects");
+        btnProjects.setBorder(null);
+        btnProjects.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProjectsActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnProjects, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 240, 40));
+
+        btnHome.setBackground(new java.awt.Color(0, 51, 102));
+        btnHome.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnHome.setForeground(new java.awt.Color(153, 153, 153));
+        btnHome.setText("Home");
+        btnHome.setBorder(null);
+        btnHome.setMaximumSize(new java.awt.Dimension(55, 30));
+        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 271, 240, 40));
+
+        btnDonors.setBackground(new java.awt.Color(0, 51, 102));
+        btnDonors.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnDonors.setForeground(new java.awt.Color(153, 153, 153));
+        btnDonors.setText("Donors ");
+        btnDonors.setBorder(null);
+        btnDonors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonorsActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDonors, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 240, 40));
+
+        btnDonations.setBackground(new java.awt.Color(0, 51, 102));
+        btnDonations.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnDonations.setForeground(new java.awt.Color(153, 153, 153));
+        btnDonations.setText("Donations");
+        btnDonations.setBorder(null);
+        btnDonations.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonationsActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDonations, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 240, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 580));
 
@@ -113,6 +144,32 @@ public class home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        login login= new login();
+        login .setVisible(true);
+        this.dispose();
+         
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnProjectsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProjectsActionPerformed
+        Projectdetails projects= new Projectdetails();
+        projects.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnProjectsActionPerformed
+
+    private void btnDonorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonorsActionPerformed
+       donorRegistration register= new donorRegistration();
+        register .setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnDonorsActionPerformed
+
+    private void btnDonationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDonationsActionPerformed
+         DonationProcess donation= new DonationProcess();
+        donation.setVisible(true);
+        this.dispose();
+         
+    }//GEN-LAST:event_btnDonationsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,16 +207,16 @@ public class home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDonations;
+    private javax.swing.JButton btnDonors;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnProjects;
+    private javax.swing.JButton btnReports;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel jlbladmin;
-    private javax.swing.JLabel jlblcampaigns;
-    private javax.swing.JLabel jlbldonations;
-    private javax.swing.JLabel jlbldonor;
-    private javax.swing.JLabel jlblhome;
-    private javax.swing.JLabel jlblreports;
     private javax.swing.JLabel jlblwelcome;
     private javax.swing.JLabel userpic;
     // End of variables declaration//GEN-END:variables
