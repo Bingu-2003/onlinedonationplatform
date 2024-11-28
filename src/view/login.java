@@ -31,7 +31,7 @@ public class login extends javax.swing.JFrame {
         jScrollBar1 = new javax.swing.JScrollBar();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jlblworldvision = new javax.swing.JLabel();
+        jlblcharityCeylon = new javax.swing.JLabel();
         jlbllogintoaccount = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jlblaccount = new javax.swing.JLabel();
@@ -45,6 +45,7 @@ public class login extends javax.swing.JFrame {
         jbtnlogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("LOGIN");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -55,9 +56,9 @@ public class login extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel1.setPreferredSize(new java.awt.Dimension(700, 500));
 
-        jlblworldvision.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
-        jlblworldvision.setForeground(new java.awt.Color(0, 51, 102));
-        jlblworldvision.setText("CharityCeylon");
+        jlblcharityCeylon.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 1, 18)); // NOI18N
+        jlblcharityCeylon.setForeground(new java.awt.Color(0, 51, 102));
+        jlblcharityCeylon.setText("CharityCeylon");
 
         jlbllogintoaccount.setFont(new java.awt.Font("Sitka Text", 1, 36)); // NOI18N
         jlbllogintoaccount.setForeground(new java.awt.Color(0, 51, 102));
@@ -107,8 +108,8 @@ public class login extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jlblworldvision)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addComponent(jlblcharityCeylon)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jlblaccount)
@@ -141,7 +142,7 @@ public class login extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jlblworldvision))
+                        .addComponent(jlblcharityCeylon))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(jlbllogintoaccount)
@@ -274,10 +275,10 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JButton jbtnlogin;
     private javax.swing.JLabel jlblaccount;
+    private javax.swing.JLabel jlblcharityCeylon;
     private javax.swing.JLabel jlbllogintoaccount;
     private javax.swing.JLabel jlblpassword;
     private javax.swing.JLabel jlblusername;
-    private javax.swing.JLabel jlblworldvision;
     private javax.swing.JPasswordField jpassword;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables

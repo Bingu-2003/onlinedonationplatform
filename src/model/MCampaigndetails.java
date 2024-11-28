@@ -5,7 +5,7 @@
 package model;
 import java.sql.*;
 
-public class MProjectdetails {
+public class MCampaigndetails {
     public void addProject(int project_id, String project_name, String category, String start_date, String end_date,double target_amount,String description )
     {
         

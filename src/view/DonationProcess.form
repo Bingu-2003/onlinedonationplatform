@@ -127,7 +127,7 @@
             <StringItem index="0" value="Cash"/>
             <StringItem index="1" value="Credit/Debit Card"/>
             <StringItem index="2" value="Cheque"/>
-            <StringItem index="3" value="Babk Tranfer"/>
+            <StringItem index="3" value="Bank Tranfer"/>
           </StringArray>
         </Property>
       </Properties>
@@ -146,6 +146,9 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCampaignNameActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

@@ -16,25 +16,25 @@ public class DonationProcess extends javax.swing.JFrame {
 
     private void loadCampaigns() {
     try {
-        // Establish database connection
+        
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
 
-        // Prepare SQL query to fetch project names
-        String query = "SELECT project_name FROM Project";
+        
+        String query = "SELECT campaign_name FROM Campaign";
         PreparedStatement stmt = conn.prepareStatement(query);
 
-        // Execute the query
+        
         ResultSet rs = stmt.executeQuery();
 
-        // Clear existing items in cmbCampaignName
+        
         cmbCampaignName.removeAllItems();
 
-        // Populate combo box with project names
+       
         while (rs.next()) {
-            cmbCampaignName.addItem(rs.getString("project_name"));
+            cmbCampaignName.addItem(rs.getString("campaign_name"));
         }
 
-        // Close resources
+       
         rs.close();
         stmt.close();
         conn.close();
@@ -46,36 +46,36 @@ public class DonationProcess extends javax.swing.JFrame {
 }
     
     private void fetchDonorName() {
-    String donor_id = txtDonorId.getText().trim(); // Get the entered donor ID
+    String donor_id = txtDonorId.getText().trim(); 
 
-    // Ensure donor ID is not empty
+  
     if (donor_id.isEmpty()) {
-        txtDonorName.setText(""); // Clear the name field if ID is empty
+        txtDonorName.setText(""); 
         return;
     }
 
     try {
-        // Establish database connection
+       
         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Donation", "root", "");
 
-        // Query to fetch donor name based on donor ID
+       
         String sql = "SELECT donor_name FROM Donor WHERE donor_id = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
         stmt.setInt(1, Integer.parseInt(donor_id)); // Set donor ID parameter
 
-        // Execute query
+       
         ResultSet rs = stmt.executeQuery();
 
         if (rs.next()) {
-            // Populate txtDonorName with the retrieved donor name
+            
             txtDonorName.setText(rs.getString("donor_name"));
         } else {
-            // If no donor is found, clear the name field and show a message
+           
             txtDonorName.setText("");
             JOptionPane.showMessageDialog(this, "No donor found with ID: " + donor_id, "Donor Not Found", JOptionPane.WARNING_MESSAGE);
         }
 
-        // Close resources
+        
         rs.close();
         stmt.close();
         conn.close();
@@ -145,9 +145,14 @@ public class DonationProcess extends javax.swing.JFrame {
         lblCampaignName.setText("Campaign Name");
         getContentPane().add(lblCampaignName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 130, 30));
 
-        cmbPaymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash", "Credit/Debit Card", "Cheque", "Babk Tranfer" }));
+        cmbPaymentMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cash", "Credit/Debit Card", "Cheque", "Bank Tranfer" }));
         getContentPane().add(cmbPaymentMethod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 270, 30));
 
+        cmbCampaignName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCampaignNameActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbCampaignName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 270, 30));
 
         lblPaymentMethod.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -271,9 +276,9 @@ public class DonationProcess extends javax.swing.JFrame {
                
                txtDonorId.setText("");
                txtDonorName.setText("");
-               cmbCampaignName.setSelectedIndex(-1); // Clear combo box selection
+               cmbCampaignName.setSelectedIndex(-1); 
                txtDonationAmount.setText("");
-               cmbPaymentMethod.setSelectedIndex(-1); // Clear payment method combo box
+               cmbPaymentMethod.setSelectedIndex(-1); 
                txtDate.setDate(null);  
                 
                 txtDonorId.requestFocus();
@@ -303,9 +308,9 @@ public class DonationProcess extends javax.swing.JFrame {
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
         txtDonorId.setText("");
                txtDonorName.setText("");
-               cmbCampaignName.setSelectedIndex(-1); // Clear combo box selection
+               cmbCampaignName.setSelectedIndex(-1); 
                txtDonationAmount.setText("");
-               cmbPaymentMethod.setSelectedIndex(-1); // Clear payment method combo box
+               cmbPaymentMethod.setSelectedIndex(-1); 
                txtDate.setDate(null);  
                 
                 txtDonorId.requestFocus();
@@ -314,6 +319,10 @@ public class DonationProcess extends javax.swing.JFrame {
     private void txtDonorIdKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDonorIdKeyReleased
         fetchDonorName();
     }//GEN-LAST:event_txtDonorIdKeyReleased
+
+    private void cmbCampaignNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCampaignNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbCampaignNameActionPerformed
 
     /**
      * @param args the command line arguments
