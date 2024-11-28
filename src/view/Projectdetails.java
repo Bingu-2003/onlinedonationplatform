@@ -143,6 +143,7 @@ public class Projectdetails extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnexit = new javax.swing.JButton();
         lblworldvision = new javax.swing.JLabel();
+        btnexit1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 102));
@@ -155,7 +156,7 @@ public class Projectdetails extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 3, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanelproject.setBackground(javax.swing.UIManager.getDefaults().getColor("CheckBox.icon[filled].focusedSelectedBorderColor"));
@@ -315,6 +316,17 @@ public class Projectdetails extends javax.swing.JFrame {
         lblworldvision.setForeground(new java.awt.Color(0, 51, 102));
         lblworldvision.setText("CharityCeylon");
 
+        btnexit1.setBackground(new java.awt.Color(204, 204, 204));
+        btnexit1.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        btnexit1.setForeground(new java.awt.Color(0, 51, 102));
+        btnexit1.setText("Exit");
+        btnexit1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnexit1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnexit1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -342,7 +354,10 @@ public class Projectdetails extends javax.swing.JFrame {
                                 .addGap(148, 148, 148))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(btnexit, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77))))))
+                                .addGap(63, 63, 63))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnexit1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,9 +369,11 @@ public class Projectdetails extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(41, 41, 41)
                 .addComponent(btnexit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(41, 41, 41)
+                .addComponent(btnexit1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -601,6 +618,10 @@ public class Projectdetails extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnexitActionPerformed
 
+    private void btnexit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexit1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnexit1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -641,6 +662,7 @@ public class Projectdetails extends javax.swing.JFrame {
     private javax.swing.JButton btnReset;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnexit;
+    private javax.swing.JButton btnexit1;
     private javax.swing.JButton btninsert;
     private javax.swing.JButton btnupdate;
     private javax.swing.JComboBox<String> cmbCategory;
