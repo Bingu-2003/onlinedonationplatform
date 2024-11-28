@@ -56,12 +56,12 @@ public class DonationProcess extends javax.swing.JFrame {
 
     try {
        
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Donation", "root", "");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
 
        
         String sql = "SELECT donor_name FROM Donor WHERE donor_id = ?";
         PreparedStatement stmt = conn.prepareStatement(sql);
-        stmt.setInt(1, Integer.parseInt(donor_id)); // Set donor ID parameter
+        stmt.setInt(1, Integer.parseInt(donor_id)); 
 
        
         ResultSet rs = stmt.executeQuery();
@@ -219,7 +219,7 @@ public class DonationProcess extends javax.swing.JFrame {
     private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneActionPerformed
          
     try {
-        // Input Validation
+      
         if (txtDonorId.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Donor ID is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -240,10 +240,7 @@ public class DonationProcess extends javax.swing.JFrame {
             return;
         }
 
-        if (!txtDonationAmount.getText().matches("\\d+(\\.\\d{1,2})?")) {
-            JOptionPane.showMessageDialog(this, "Invalid Donation Amount. Please enter a valid number.", "Validation Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+      
 
         if (cmbPaymentMethod.getSelectedItem() == null || cmbPaymentMethod.getSelectedItem().toString().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Payment Method is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
@@ -255,8 +252,8 @@ public class DonationProcess extends javax.swing.JFrame {
             return;
         }
 
-        // Database Insertion
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/Donation", "root", "")) {
+      
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "")) {
             String sql = "INSERT INTO Donate(donor_id, donor_name, campaign_name, donation_amount, payment_method,date) VALUES (?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -268,7 +265,7 @@ public class DonationProcess extends javax.swing.JFrame {
             stmt.setString(5, cmbPaymentMethod.getSelectedItem().toString().trim());
             stmt.setString(6, new SimpleDateFormat("yyyy-MM-dd").format(txtDate.getDate()));
 
-            // Execute the insertion
+            
             int rowsInserted = stmt.executeUpdate();
 
             if (rowsInserted > 0) {

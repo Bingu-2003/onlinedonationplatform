@@ -52,28 +52,41 @@ public class Reports extends javax.swing.JFrame {
 
     private void btnCampaignReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCampaignReportActionPerformed
     
-        try {
-            // Establish a connection to the MySQL database
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Donation", "root", "");
+       try {
+        // Establish database connection
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Donation", "root", "");
 
-            // Path to the compiled Jasper report (.jasper)
-            String reportPath = "path/to/your_report.jasper"; // Replace with the actual path
+        // SQL query for campaign-wise report data
+        String sql = "SELECT c.campaign_name AS CampaignName, " +
+                     "c.target_amount AS TargetAmount, " +
+                     "IFNULL(SUM(d.donation_amount), 0) AS TotalDonations, " +
+                     "(c.target_amount - IFNULL(SUM(d.donation_amount), 0)) AS RemainingAmount " +
+                     "FROM Campaign c " +
+                     "LEFT JOIN Donate d ON c.campaign_name = d.campaign_name " +
+                     "GROUP BY c.campaign_id, c.campaign_name, c.target_amount";
 
-            // Fill the report with data from the database (no parameters in this case, hence empty HashMap)
-            JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, new HashMap<>(), conn);
+        // Prepare the SQL query and get the result set
+        PreparedStatement pst = conn.prepareStatement(sql);
+        ResultSet rs = pst.executeQuery();
 
-            // Display the report in a JasperViewer
-            JasperViewer.viewReport(jasperPrint, false);
+        // Generate JasperReport using the result set as a data source
+        String reportPath = "path/to/your_report.jasper"; // Replace with the actual .jasper file path
+        JRResultSetDataSource jrDataSource = new JRResultSetDataSource(rs);
+        JasperPrint jasperPrint = JasperFillManager.fillReport(reportPath, new HashMap<>(), jrDataSource);
 
-            // Close the database connection
-            conn.close();
+        // Display the report in a viewer
+        JasperViewer.viewReport(jasperPrint, false);
 
-        } catch (Exception ex) {
-            // Handle any errors that occur during report generation
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-        }
-    
+        // Close resources
+        rs.close();
+        pst.close();
+        conn.close();
+
+    } catch (SQLException ex) {
+        JOptionPane.showMessageDialog(null, "SQL Error: " + ex.getMessage());
+    } catch (JRException ex) {
+        JOptionPane.showMessageDialog(null, "JasperReports Error: " + ex.getMessage());
+    }
 
 
     }//GEN-LAST:event_btnCampaignReportActionPerformed
