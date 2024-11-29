@@ -12,9 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form login
-     */
+   
     public login() {
         initComponents();
     }
