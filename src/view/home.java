@@ -159,7 +159,7 @@ public class home extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnCampaignsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCampaignsActionPerformed
-        Campaigndetails campaigns= new Campaigndetails();
+        CampaignDetails campaigns= new CampaignDetails();
         campaigns.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCampaignsActionPerformed

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dbba25a5-0a93-4fee-8400-486580447242">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    c.campaign_name,
+    c.start_date,
+    c.end_date,
+    c.target_amount,
+    SUM(dn.donation_amount) AS total_donations,
+    (c.target_amount - SUM(dn.donation_amount)) AS remaining_amount,
+    COUNT(dn.donation_amount) AS number_of_donations
+FROM 
+    donation.campaign c
+JOIN 
+    donation.donate dn ON c.campaign_name = dn.campaign_name
+GROUP BY 
+    c.campaign_name, c.start_date, c.end_date, c.target_amount;]]>
+	</queryString>
+	<field name="campaign_name" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="start_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="end_date" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="target_amount" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="total_donations" class="java.math.BigDecimal"/>
+	<field name="remaining_amount" class="java.math.BigDecimal"/>
+	<field name="number_of_donations" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="13" width="277" height="43" forecolor="#000033" uuid="5f9c2a1c-3ee2-4374-80ef-597f74346a5d"/>
+				<box>
+					<pen lineColor="#000033"/>
+					<topPen lineColor="#000033"/>
+					<leftPen lineColor="#000033"/>
+					<bottomPen lineColor="#000033"/>
+					<rightPen lineColor="#000033"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="36" isBold="true" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Campaign Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="16" width="175" height="20" uuid="aa67de1d-5441-4277-bb2a-309d54441813"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Campaign Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="175" y="16" width="70" height="20" uuid="e9ad7705-26e9-4674-9b80-01512b735519"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="245" y="16" width="66" height="20" uuid="b139c284-6f9f-4815-9957-a452187ee154"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="311" y="16" width="100" height="20" uuid="e138826b-26c2-42d8-bead-d827d7bbe555"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Target Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="16" width="89" height="34" uuid="f5824372-c4e8-4357-a43b-d7f35ab32e98"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Amount of Donations]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="16" width="55" height="34" uuid="e5bee760-5339-4d6b-8a81-31f1bb7e3c54"/>
+				<textElement>
+					<font fontName="Serif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[No of Donations]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="175" height="20" uuid="5cca196e-f09a-4615-80df-cb162b09ac7b"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{campaign_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="175" y="0" width="70" height="20" uuid="cfe06fb9-df69-44a0-bf6e-928b368ee1cb"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{start_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="245" y="0" width="66" height="20" uuid="8686ab79-3c54-49a7-9f02-e102d9b0f6ca"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{end_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="311" y="0" width="100" height="20" uuid="876fa7dc-6a11-4d9f-b032-fc46855f774a"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{target_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="89" height="20" uuid="d8152a0e-b3b0-4713-a6c2-861d8ea2d9ed"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remaining_amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="500" y="0" width="55" height="20" uuid="4df4229c-ec2d-4d94-b745-29a9259faba5"/>
+				<textElement>
+					<font size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{number_of_donations}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
