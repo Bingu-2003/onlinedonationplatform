@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
+import com.toedter.calendar.JDateChooser;
 
 public class CampaignDetails extends javax.swing.JFrame {
 

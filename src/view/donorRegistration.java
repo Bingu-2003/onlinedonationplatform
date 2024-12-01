@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import net.proteanit.sql.DbUtils;
+import com.toedter.calendar.JDateChooser;
+
 
 
 public class donorRegistration extends javax.swing.JFrame {
@@ -334,12 +336,13 @@ public class donorRegistration extends javax.swing.JFrame {
         String sql = "UPDATE Donor SET donor_name = ?, gender = ?,address = ?, email = ?, phone = ? WHERE donor_id = ?";
         PreparedStatement pst = conn.prepareStatement(sql);
 
-       
+        
         pst.setString(1, donor_name);
         pst.setString(2, gender);
         pst.setString(3, address);
         pst.setString(4, email);
         pst.setString(5, phone);
+        pst.setString(6, donor_id);
       
 
         

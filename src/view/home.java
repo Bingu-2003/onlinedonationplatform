@@ -4,10 +4,7 @@
  */
 package view;
 
-/**
- *
- * @author Binguni
- */
+
 public class home extends javax.swing.JFrame {
 
     /**
@@ -78,6 +75,11 @@ public class home extends javax.swing.JFrame {
         btnReports.setForeground(new java.awt.Color(153, 153, 153));
         btnReports.setText("Reports");
         btnReports.setBorder(null);
+        btnReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportsActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 240, 40));
 
         btnCampaigns.setBackground(new java.awt.Color(0, 51, 102));
@@ -176,6 +178,13 @@ public class home extends javax.swing.JFrame {
         this.dispose();
          
     }//GEN-LAST:event_btnDonationsActionPerformed
+
+    private void btnReportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportsActionPerformed
+       CampaignReport report= new CampaignReport();
+        report.setVisible(true);
+        this.dispose();
+         
+    }//GEN-LAST:event_btnReportsActionPerformed
 
     /**
      * @param args the command line arguments
