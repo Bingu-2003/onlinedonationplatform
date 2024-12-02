@@ -23,40 +23,23 @@ public class home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jlblwelcome = new javax.swing.JLabel();
-        jlbladmin = new javax.swing.JLabel();
-        userpic = new javax.swing.JLabel();
-        btnLogin = new javax.swing.JButton();
-        btnReports = new javax.swing.JButton();
-        btnCampaigns = new javax.swing.JButton();
-        btnHome = new javax.swing.JButton();
-        btnDonors = new javax.swing.JButton();
-        btnDonations = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        backgroundpic = new javax.swing.JLabel();
+        btnLogin = new javax.swing.JButton();
+        userpic = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        btnCampaigns = new javax.swing.JButton();
+        btnDonations = new javax.swing.JButton();
+        btnDonors = new javax.swing.JButton();
+        btnReports = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("HOME");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 102));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jlblwelcome.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 18)); // NOI18N
-        jlblwelcome.setForeground(new java.awt.Color(153, 153, 153));
-        jlblwelcome.setText(" WELCOME ,");
-        jPanel1.add(jlblwelcome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, 40));
-
-        jlbladmin.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jlbladmin.setForeground(new java.awt.Color(153, 153, 153));
-        jlbladmin.setText("Admin");
-        jPanel1.add(jlbladmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 90, 30));
-
-        userpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_8742495.png"))); // NOI18N
-        userpic.setText("jLabel2");
-        jPanel1.add(userpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, 140));
+        jPanel2.setBackground(java.awt.SystemColor.activeCaption);
 
         btnLogin.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
@@ -68,19 +51,16 @@ public class home extends javax.swing.JFrame {
                 btnLoginActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 530, -1, 30));
 
-        btnReports.setBackground(new java.awt.Color(0, 51, 102));
-        btnReports.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnReports.setForeground(new java.awt.Color(153, 153, 153));
-        btnReports.setText("Reports");
-        btnReports.setBorder(null);
-        btnReports.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportsActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnReports, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 430, 240, 40));
+        userpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user_8742495.png"))); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Stencil", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("WELCOME");
+
+        jLabel2.setFont(new java.awt.Font("Neue Haas Grotesk Text Pro", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel2.setText("Admin");
 
         btnCampaigns.setBackground(new java.awt.Color(0, 51, 102));
         btnCampaigns.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -92,27 +72,21 @@ public class home extends javax.swing.JFrame {
                 btnCampaignsActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCampaigns, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 240, 40));
 
-        btnHome.setBackground(new java.awt.Color(0, 51, 102));
-        btnHome.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnHome.setForeground(new java.awt.Color(153, 153, 153));
-        btnHome.setText("Home");
-        btnHome.setBorder(null);
-        btnHome.setMaximumSize(new java.awt.Dimension(55, 30));
-        jPanel1.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 240, 40));
-
-        btnDonors.setBackground(new java.awt.Color(0, 51, 102));
-        btnDonors.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnDonors.setForeground(new java.awt.Color(153, 153, 153));
-        btnDonors.setText("Donors ");
-        btnDonors.setBorder(null);
-        btnDonors.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDonorsActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnDonors, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 240, 40));
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(btnCampaigns, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCampaigns, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         btnDonations.setBackground(new java.awt.Color(0, 51, 102));
         btnDonations.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -124,31 +98,75 @@ public class home extends javax.swing.JFrame {
                 btnDonationsActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDonations, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 240, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 580));
+        btnDonors.setBackground(new java.awt.Color(0, 51, 102));
+        btnDonors.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnDonors.setForeground(new java.awt.Color(153, 153, 153));
+        btnDonors.setText("Donors ");
+        btnDonors.setBorder(null);
+        btnDonors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDonorsActionPerformed(evt);
+            }
+        });
 
-        jPanel2.setBackground(java.awt.SystemColor.activeCaption);
-
-        backgroundpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rb_84397.png"))); // NOI18N
-        backgroundpic.setText("jLabel3");
+        btnReports.setBackground(new java.awt.Color(0, 51, 102));
+        btnReports.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btnReports.setForeground(new java.awt.Color(153, 153, 153));
+        btnReports.setText("Reports");
+        btnReports.setBorder(null);
+        btnReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(backgroundpic, javax.swing.GroupLayout.PREFERRED_SIZE, 1410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnLogin)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(userpic, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addComponent(jLabel2))
+                        .addComponent(jLabel1))))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91)
+                .addComponent(btnDonors, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101)
+                .addComponent(btnDonations, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(backgroundpic, javax.swing.GroupLayout.PREFERRED_SIZE, 574, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(userpic, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(153, 153, 153)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnDonations, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnDonors, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnReports, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, 580));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 580));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -222,17 +240,15 @@ public class home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backgroundpic;
     private javax.swing.JButton btnCampaigns;
     private javax.swing.JButton btnDonations;
     private javax.swing.JButton btnDonors;
-    private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLogin;
     private javax.swing.JButton btnReports;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel jlbladmin;
-    private javax.swing.JLabel jlblwelcome;
     private javax.swing.JLabel userpic;
     // End of variables declaration//GEN-END:variables
 }

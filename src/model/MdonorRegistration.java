@@ -10,41 +10,59 @@ public class MdonorRegistration {
     
     
     
-    
-   public void registerDonor(int donor_id, String donor_name, String gender, String address, String email, String phone) {
-        // Step 2: Insert the data into the database
-    try {
-        // Establish a connection
-        Connection conn = DBConnection.createDBConnection();
-
-        // Prepare the SQL query
-        String sql = "INSERT INTO Donor (Donor_id, Donor_name, gender, address, email, hone) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-
-        // Set the parameters
-        pstmt.setInt(1, donor_id);
-        pstmt.setString(2, donor_name);
-        pstmt.setString(3, gender);
-        pstmt.setString(4, address);
-        pstmt.setString(5, email);
-        pstmt.setString(6, phone);
-
-        // Execute the query
-        int rowsInserted = pstmt.executeUpdate();
-        if (rowsInserted > 0) {
-            JOptionPane.showMessageDialog(null, "Donor registered successfully!");
+     public void registerDonor(int donor_id, String donor_name,String gender,String address, String email,String phone)
+    {
+        try
+        {
+            Statement st = DBConnection.createDBConnection().createStatement();
+            int rowsInserted = st.executeUpdate("insert into donor values(' "+donor_id+" ' , ' "+donor_name+" ',' "+gender+"','"+address+"','"+email+"','"+phone+"')");
+            
+            if (rowsInserted > 0) {
+             System.out.println("Donor successfully registered.");
+           }
         }
-
-        // Close resources
-        pstmt.close();
-        conn.close();
-
-    } catch (SQLException ex) {
-        ex.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
+         
+        
     }
-                 
-   }}
+     
+     public void updateDonor(String donor_id, String donor_name, String gender, String address, String email, String phone) 
+    {
+        try 
+        {
+            Statement st = DBConnection.createDBConnection().createStatement();
+            int rowsInserted = st.executeUpdate("UPDATE Donor SET  donor_name = '"+donor_name+"' , gender = '"+ gender+"' , email = '"+email+"' , address = '"+address+"' , phone = '"+phone+"' WHERE donor_id = '"+donor_id+"'");
+           
+            if (rowsInserted > 0) {
+             System.out.println("Donor updated.");
+           }
+        } 
+        catch (SQLException e) {
+
+            System.err.println(e.getMessage());
+        }
+    }
+     
+   public void deleteDonor(String donor_id) 
+    {
+        try 
+        {
+            Statement st = DBConnection.createDBConnection().createStatement();
+            st.executeUpdate("DELETE FROM Donor WHERE donor_id = '"+donor_id+"' ");
+            System.out.println("Donor successfully deleted.");
+
+        } 
+        catch (SQLException e) 
+        {
+           System.err.println(e.getMessage());
+        }
+    }
+     
+     
+   }
    
 
 

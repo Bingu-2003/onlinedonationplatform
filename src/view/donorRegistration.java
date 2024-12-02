@@ -89,6 +89,17 @@ public class donorRegistration extends javax.swing.JFrame {
     }
 
     }
+    public void clearForm()
+    {
+         txtDonorId.setText("");
+    txtDonorName.setText("");
+    txtAddress.setText("");
+    txtEmail.setText("");
+    txtPhoneNo.setText("");
+    rbtnMale.setSelected(false);
+    rbtnFemale.setSelected(false);
+    
+    }
 
 
   
@@ -312,7 +323,8 @@ public class donorRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_txtAddressActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-     String donor_id = txtDonorId.getText(); 
+    
+   String donor_id = txtDonorId.getText(); 
     String donor_name = txtDonorName.getText();
   
     String gender = ""; 
@@ -326,39 +338,17 @@ public class donorRegistration extends javax.swing.JFrame {
     String email= txtEmail.getText();
     String phone= txtPhoneNo.getText();
 
-    
-
-    try {
-       
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Donation", "root", "");
-
-       
-        String sql = "UPDATE Donor SET donor_name = ?, gender = ?,address = ?, email = ?, phone = ? WHERE donor_id = ?";
-        PreparedStatement pst = conn.prepareStatement(sql);
-
-        
-        pst.setString(1, donor_name);
-        pst.setString(2, gender);
-        pst.setString(3, address);
-        pst.setString(4, email);
-        pst.setString(5, phone);
-        pst.setString(6, donor_id);
-      
-
-        
-        int rowsUpdated = pst.executeUpdate();
-        if (rowsUpdated > 0) {
-            JOptionPane.showMessageDialog(null, "Record updated successfully!");
+        try {
+            CdonorRegistration update = new CdonorRegistration ();
+            update.updateDonor(donor_id, donor_name,gender,address,email,phone);
+            JOptionPane.showMessageDialog(this, "Donor details updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Update Error", JOptionPane.ERROR_MESSAGE);
         }
-       loadTable();
-        
-        pst.close();
-        conn.close();
 
-    } catch (SQLException ex) {
-        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-       
-    }
+
+      loadTable();  
+     
 
 
    
@@ -382,7 +372,7 @@ public class donorRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDonorIdActionPerformed
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-       int donor_id;
+        int donor_id;
     
         donor_id = Integer.parseInt(txtDonorId.getText());
    
@@ -417,51 +407,26 @@ public class donorRegistration extends javax.swing.JFrame {
         return;
     }
 
-   
-    try {
-       
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
+      try {
+               
+              CdonorRegistration regD = new CdonorRegistration (); 
+            regD.registerDonor(donor_id,donor_name,gender,address,email,phone);  
+            JOptionPane.showMessageDialog(this, "Donor Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-       
-        String sql = "INSERT INTO Donor (Donor_id, Donor_name, gender, address, email, Phone) VALUES (?, ?, ?, ?, ?, ?)";
-        PreparedStatement pstmt = conn.prepareStatement(sql);
-
-       
-        pstmt.setInt(1, donor_id);
-        pstmt.setString(2, donor_name);
-        pstmt.setString(3, gender);
-        pstmt.setString(4, address);
-        pstmt.setString(5, email);
-        pstmt.setString(6, phone);
-
-     
-        int rowsInserted = pstmt.executeUpdate();
-        if (rowsInserted > 0) {
-            JOptionPane.showMessageDialog(null, "Donor registered successfully!");
-            
-            loadNextDonorId();
+                 clearForm();
         }
-
-     
-        pstmt.close();
-        conn.close();
-
-    } catch (SQLException ex) {
-       
-        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-    }
-     txtDonorId.setText("");
-    txtDonorName.setText("");
-    txtAddress.setText("");
-    txtEmail.setText("");
-    txtPhoneNo.setText("");
-    rbtnMale.setSelected(false);
-    rbtnFemale.setSelected(false);
-    
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Register Error", JOptionPane.ERROR_MESSAGE);
+        }
+             
+    clearForm();
     loadNextDonorId();
     
+   
     txtDonorName.requestFocus();
    loadTable();
+                   
                  
                 
            
@@ -469,14 +434,7 @@ public class donorRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-    txtDonorId.setText("");
-    txtDonorName.setText("");
-    txtAddress.setText("");
-    txtEmail.setText("");
-    txtPhoneNo.setText("");
-    rbtnMale.setSelected(false);
-    rbtnFemale.setSelected(false);
-    txtDonorId.requestFocus();       
+     clearForm();  
     }//GEN-LAST:event_btnResetActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -485,29 +443,22 @@ public class donorRegistration extends javax.swing.JFrame {
        if(check== 0){
            
            
-           String campaign_id= txtDonorId.getText();
+           String donor_id= txtDonorId.getText();
            try {
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
-               String sql = "DELETE  FROM Donor WHERE donor_id = '"+campaign_id+"'";
-               PreparedStatement pstmt = conn.prepareStatement(sql);
-               pstmt.execute();
-               JOptionPane.showMessageDialog(null, "Donor delete successfully!");
                
+               CdonorRegistration deleteD = new CdonorRegistration();
+            deleteD.deleteDonor(donor_id);  
+            JOptionPane.showMessageDialog(this, "Flight details deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+                 clearForm();
+        }
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Delete Error", JOptionPane.ERROR_MESSAGE);
+        }
+
                
-                txtDonorName.setText("");
-                 rbtnMale.setSelected(false);
-                   rbtnFemale.setSelected(false);
-                txtAddress.setText("");
-                txtEmail.setText("");
-                txtPhoneNo.setText("");
-                
-                txtDonorName.requestFocus();
-               
-           } catch (SQLException ex) {
-               
-               JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-           }
-       
+         
        
        }loadTable();
        
