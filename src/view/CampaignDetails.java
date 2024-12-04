@@ -624,7 +624,7 @@ public class CampaignDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-       home home= new home();
+       Dashboard home= new Dashboard();
         home.setVisible(true);
         this.dispose();
 

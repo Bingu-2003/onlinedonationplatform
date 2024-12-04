@@ -61,7 +61,26 @@ public class MdonorRegistration {
         }
     }
      
-     
+      public void getNextDonorId()
+    { int nextId = 1;
+        try 
+        {
+            Statement st = DBConnection.createDBConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(Donor_id) AS MaxID FROM Donor");
+           
+            if  (rs.next()) {
+              int maxId = rs.getInt("MaxID");
+            nextId = maxId + 1;
+            
+           }
+             
+        } 
+        catch (SQLException e) {
+
+            System.err.println(e.getMessage());
+        }
+       
+    }
    }
    
 

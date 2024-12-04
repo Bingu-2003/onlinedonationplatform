@@ -356,7 +356,7 @@ public class donorRegistration extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
-         home home= new home();
+         Dashboard home= new Dashboard();
         home.setVisible(true);
         this.dispose();
          

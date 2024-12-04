@@ -210,7 +210,7 @@ public class DonationProcess extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
-        home home= new home();
+        Dashboard home= new Dashboard();
         home.setVisible(true);
         this.dispose();
 

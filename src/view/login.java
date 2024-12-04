@@ -213,7 +213,7 @@ public class login extends javax.swing.JFrame {
         
          if(uname.equals("Bingu") && pword.equals("2003")) {
          
-          home home= new home();
+          Dashboard home= new Dashboard();
         home.setVisible(true);
         this.dispose();
          
