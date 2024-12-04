@@ -6,11 +6,6 @@ package controller;
 import model.*;
 
 
-
-
-
-
-
 public class CdonorRegistration {
     
     public void registerDonor(int donor_id,String donor_name,String gender,String address,String email, String phone)

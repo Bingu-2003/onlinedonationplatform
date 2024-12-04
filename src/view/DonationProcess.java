@@ -87,12 +87,24 @@ public class DonationProcess extends javax.swing.JFrame {
         
     }
 }
+    public void clearForm()
+    {
+    txtDonorId.setText("");
+    txtDonorName.setText("");
+   cmbCampaignName.setSelectedIndex(-1); 
+   txtDonationAmount.setText("");
+   cmbPaymentMethod.setSelectedIndex(-1); 
+    txtDate.setDate(null);  
+                
+    
+    }
 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         lblDonation = new javax.swing.JLabel();
         txtDonationAmount = new javax.swing.JTextField();
         txtDonorId = new javax.swing.JTextField();
@@ -111,7 +123,10 @@ public class DonationProcess extends javax.swing.JFrame {
         btnback = new javax.swing.JButton();
         backfroundPhoto = new javax.swing.JLabel();
 
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Donation ");
         setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -252,6 +267,8 @@ public class DonationProcess extends javax.swing.JFrame {
             return;
         }
 
+        
+        
       
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "")) {
             String sql = "INSERT INTO Donate(donor_id, donor_name, campaign_name, donation_amount, payment_method,date) VALUES (?, ?, ?, ?, ?, ?)";
@@ -270,13 +287,7 @@ public class DonationProcess extends javax.swing.JFrame {
 
             if (rowsInserted > 0) {
                 JOptionPane.showMessageDialog(this, "Donation Success!", "Success", JOptionPane.INFORMATION_MESSAGE);
-               
-               txtDonorId.setText("");
-               txtDonorName.setText("");
-               cmbCampaignName.setSelectedIndex(-1); 
-               txtDonationAmount.setText("");
-               cmbPaymentMethod.setSelectedIndex(-1); 
-               txtDate.setDate(null);  
+               clearForm(); 
                 
                 txtDonorId.requestFocus();
                 
@@ -303,12 +314,7 @@ public class DonationProcess extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDoneActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        txtDonorId.setText("");
-               txtDonorName.setText("");
-               cmbCampaignName.setSelectedIndex(-1); 
-               txtDonationAmount.setText("");
-               cmbPaymentMethod.setSelectedIndex(-1); 
-               txtDate.setDate(null);  
+       clearForm();
                 
                 txtDonorId.requestFocus();
     }//GEN-LAST:event_btnResetActionPerformed
@@ -363,6 +369,7 @@ public class DonationProcess extends javax.swing.JFrame {
     private javax.swing.JButton btnback;
     private javax.swing.JComboBox<String> cmbCampaignName;
     private javax.swing.JComboBox<String> cmbPaymentMethod;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblCampaignName;
     private javax.swing.JLabel lblCharityCeylon;
     private javax.swing.JLabel lblDate;

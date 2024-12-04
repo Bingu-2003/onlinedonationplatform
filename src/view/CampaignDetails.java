@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import controller.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import net.proteanit.sql.DbUtils;
 import com.toedter.calendar.JDateChooser;
+
 
 public class CampaignDetails extends javax.swing.JFrame {
 
@@ -103,6 +105,17 @@ public class CampaignDetails extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());
         }
 }
+    public void clearForm()
+    {
+         txtSearch.setText("");
+        txtCampaignName.setText("");
+        cmbCategory.setSelectedIndex(0);
+        txtStartDate.setDate(null);
+        txtEndDate.setDate(null);
+        txtTargetAmount.setText("");
+        txtdescription.setText("");
+
+    }
 
 
     @SuppressWarnings("unchecked")
@@ -284,10 +297,10 @@ public class CampaignDetails extends javax.swing.JFrame {
                 .addComponent(lbldescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 600));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 630));
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -381,7 +394,6 @@ public class CampaignDetails extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(215, Short.MAX_VALUE)
@@ -402,6 +414,9 @@ public class CampaignDetails extends javax.swing.JFrame {
                 .addComponent(btnReset)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -415,52 +430,47 @@ public class CampaignDetails extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnUpdate)
                     .addComponent(btnDelete)
-                    .addComponent(btnReset))
+                    .addComponent(btnReset)
+                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 490, 600));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 490, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int check = JOptionPane.showConfirmDialog(null, "Are you sure do you want to delete? ");
+       int check = JOptionPane.showConfirmDialog(null, "Are you sure do you want to delete? ");
+       
+       if(check== 0){
+           
+           
+           String campaign_id= txtCampaignId.getText();
+           try {
+               
+              CCampaignDetails deleteC = new CCampaignDetails();
+              deleteC.deleteCampaign(campaign_id);
+              
+            JOptionPane.showMessageDialog(this, "Campaign details deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-        if(check== 0){
+                 clearForm();
+        }
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Delete Error", JOptionPane.ERROR_MESSAGE);
+        }
 
-            String campaign_id= txtCampaignId.getText();
-            try {
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
-                String sql = "DELETE  FROM Campaign WHERE campaign_id = '"+campaign_id+"'";
-                PreparedStatement pstmt = conn.prepareStatement(sql);
-                pstmt.execute();
-                JOptionPane.showMessageDialog(null, "Campaign delete successfully!");
-
-                txtCampaignName.setText("");
-                cmbCategory.setSelectedIndex(0);
-                txtStartDate.setDate(null);
-                txtEndDate.setDate(null);
-                txtTargetAmount.setText("");
-                txtdescription.setText("");
-
-                txtCampaignName.requestFocus();
-
-            } catch (SQLException ex) {
-
-                JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-            }
-
-        }loadTable();
+               
+         
+       
+       }loadTable();
+       
        
 
 
@@ -484,46 +494,30 @@ public class CampaignDetails extends javax.swing.JFrame {
         String target_amount = txtTargetAmount.getText();
         String description = txtdescription.getText();
 
-        try {
+      
 
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/Donation", "root", "");
-
-            String sql = "UPDATE Campaign SET campaign_name = ?, category = ?, start_date = ?, end_date = ?, target_amount = ?, description = ? WHERE campaign_id = ?";
-            PreparedStatement pst = conn.prepareStatement(sql);
-
-            pst.setString(1, campaign_name);
-            pst.setString(2, category);
-            pst.setString(3, start_date);
-            pst.setString(4, end_date);
-            pst.setString(5, target_amount);
-            pst.setString(6, description);
-            pst.setString(7, campaign_id);
-
-            int rowsUpdated = pst.executeUpdate();
-            if (rowsUpdated > 0) {
-                JOptionPane.showMessageDialog(null, "Record updated successfully!");
-            }
-            loadTable();
-
-            pst.close();
-            conn.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-
+             try {
+                 
+           CCampaignDetails updateC = new  CCampaignDetails();
+            updateC.updateCampaign(campaign_id,campaign_name,category,start_date,end_date,target_amount,description);
+            JOptionPane.showMessageDialog(this, "Donor details updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            loadTable(); 
+            clearForm();
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Update Error", JOptionPane.ERROR_MESSAGE);
         }
 
+
+       
+     
+
+        
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-       txtSearch.setText("");
-        txtCampaignName.setText("");
-        cmbCategory.setSelectedIndex(0);
-        txtStartDate.setDate(null);
-        txtEndDate.setDate(null);
-        txtTargetAmount.setText("");
-        txtdescription.setText("");
-
+      
+        clearForm();
         txtCampaignName.requestFocus();
 
     }//GEN-LAST:event_btnResetActionPerformed
@@ -579,47 +573,25 @@ public class CampaignDetails extends javax.swing.JFrame {
             return;
         }
 
-        try {
+         try {
+               
+             CCampaignDetails addC = new CCampaignDetails ();
+              addC.addCampaign(campaign_id,campaign_name,category,start_date,end_date,target_amount,description);
+            JOptionPane.showMessageDialog(this, " New Campaign added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
 
-            String sql = "INSERT INTO Campaign (campaign_id, campaign_name, category, start_date, end_date, target_amount, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement pstmt = conn.prepareStatement(sql);
-
-            pstmt.setInt(1, campaign_id);
-            pstmt.setString(2, campaign_name);
-            pstmt.setString(3, category);
-            pstmt.setString(4, start_date);
-            pstmt.setString(5, end_date);
-            pstmt.setDouble(6, target_amount);
-            pstmt.setString(7, description);
-
-            int rowsInserted = pstmt.executeUpdate();
-            if (rowsInserted > 0) {
-                JOptionPane.showMessageDialog(null, "Campaign added successfully!");
-
-                txtCampaignName.setText("");
-                cmbCategory.setSelectedIndex(0);
-                txtStartDate.setDate(null);
-                txtEndDate.setDate(null);
-                txtTargetAmount.setText("");
-                txtdescription.setText("");
-
-                loadNextCampaignId();
-                 loadTable();
-
-                txtCampaignName.requestFocus();
-            }
-
-            pstmt.close();
-            conn.close();
-
-        } catch (SQLException ex) {
-
-            JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
         }
-       
-
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this, "An error occurred: " + e.getMessage(), "Insert Error", JOptionPane.ERROR_MESSAGE);
+        }
+             
+    clearForm();
+    loadNextCampaignId();
+    
+   
+    txtCampaignName.requestFocus();
+   loadTable();
 
     }//GEN-LAST:event_btnAddActionPerformed
 

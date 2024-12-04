@@ -448,7 +448,7 @@ public class donorRegistration extends javax.swing.JFrame {
                
                CdonorRegistration deleteD = new CdonorRegistration();
             deleteD.deleteDonor(donor_id);  
-            JOptionPane.showMessageDialog(this, "Flight details deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Donor deleted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                  clearForm();
         }
