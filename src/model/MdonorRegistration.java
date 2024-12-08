@@ -61,27 +61,31 @@ public class MdonorRegistration {
         }
     }
      
-      public void getNextDonorId()
-    { int nextId = 1;
-        try 
-        {
-            Statement st = DBConnection.createDBConnection().createStatement();
-            ResultSet rs = st.executeQuery("SELECT MAX(Donor_id) AS MaxID FROM Donor");
-           
-            if  (rs.next()) {
-              int maxId = rs.getInt("MaxID");
-            nextId = maxId + 1;
+     public int getNextDonorId() {
+        int nextId = 1;
+        try {
             
-           }
-             
-        } 
-        catch (SQLException e) {
-
-            System.err.println(e.getMessage());
+            Statement st = DBConnection.createDBConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(donor_id) AS MaxID FROM Donor");
+            
+            if (rs.next()) {
+                int maxId = rs.getInt("MaxID");
+                nextId = maxId + 1; 
+            }
+            
+        } catch (SQLException ex) {
+            System.err.println("Error fetching next Donor ID: " + ex.getMessage());
         }
-       
+        
+        return nextId;
     }
-   }
+     
+    
+    }
+
+    
+    
+   
    
 
 

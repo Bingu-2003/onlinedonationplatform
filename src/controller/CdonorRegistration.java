@@ -24,7 +24,13 @@ public class CdonorRegistration {
         MdonorRegistration deleteD = new MdonorRegistration();
         deleteD.deleteDonor(donor_id);
     }   
-   }
+    
+   public int getNextDonorId() {
+       MdonorRegistration loadId = new MdonorRegistration();
+        return loadId.getNextDonorId();
+    }
+  
+}
     
 
 

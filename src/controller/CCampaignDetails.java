@@ -21,5 +21,10 @@ public class CCampaignDetails {
     {
         MCampaignDetails  deleteC = new MCampaignDetails ();
         deleteC.deleteCampaign(campaign_id);
-    }   
+    }  
+     public int getNextCampaignId() {
+         
+       MCampaignDetails loadId = new MCampaignDetails();
+        return loadId.getNextCampaignId();
+    }
 }

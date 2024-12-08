@@ -9,6 +9,7 @@ import java.sql.*;
 import java.text.SimpleDateFormat;
 import net.proteanit.sql.DbUtils;
 import com.toedter.calendar.JDateChooser;
+import model.*;
 
 
 
@@ -21,47 +22,41 @@ public class donorRegistration extends javax.swing.JFrame {
         loadTable();
     }
     private void loadNextDonorId() {
-    try {
         
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
-
-       
-        String sql = "SELECT MAX(Donor_id) AS MaxID FROM Donor";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-
-        
-        int nextId = 1;
-        if (rs.next()) {
-            int maxId = rs.getInt("MaxID"); 
-            nextId = maxId + 1; 
-        }
-
-       
+        try {
+            CdonorRegistration loadId = new CdonorRegistration ();
+         int nextId = loadId.getNextDonorId();
         txtDonorId.setText(String.valueOf(nextId));
-
-       
-        rs.close();
-        stmt.close();
-        conn.close();
-    } catch (SQLException ex) {
-       
-        JOptionPane.showMessageDialog(null, "Error fetching next Donor ID: " + ex.getMessage());
-    }
+        
+        } catch (Exception e) {
+          JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());  
+        }
+        
 }
      public void loadTable()
     {
     try{
-         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
-    String sql= "SELECT * FROM Donor";
-  PreparedStatement pst = conn.prepareStatement(sql);
-     ResultSet rs= pst.executeQuery();
+         Connection conn = DBConnection.createDBConnection();
+         String sql= "SELECT * FROM Donor";
+          PreparedStatement pst = conn.prepareStatement(sql);
+          ResultSet rs= pst.executeQuery();
    tableDonor.setModel(DbUtils.resultSetToTableModel(rs));
+   
+   tableDonor.getColumnModel().getColumn(0).setHeaderValue("Donor ID");
+        tableDonor.getColumnModel().getColumn(1).setHeaderValue("Donor Name");
+        tableDonor.getColumnModel().getColumn(2).setHeaderValue("Gender");
+        tableDonor.getColumnModel().getColumn(3).setHeaderValue("Address");
+        tableDonor.getColumnModel().getColumn(4).setHeaderValue("Email");
+        tableDonor.getColumnModel().getColumn(5).setHeaderValue("Phone Number");
+
+        
+        tableDonor.getTableHeader().repaint();
     }
     catch(Exception e)
     {
     JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());}
    
+    
     
     }
     public void tableData()
@@ -138,7 +133,7 @@ public class donorRegistration extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDonor = new javax.swing.JTable();
         btnDelete = new javax.swing.JButton();
-        bakgroundpic = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DONOR REGISTRATION");
@@ -148,24 +143,24 @@ public class donorRegistration extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         llblcharityceylon.setBackground(new java.awt.Color(0, 51, 102));
-        llblcharityceylon.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        llblcharityceylon.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
         llblcharityceylon.setForeground(new java.awt.Color(0, 51, 102));
         llblcharityceylon.setText("CharityCeylon");
         jPanel1.add(llblcharityceylon, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 150, 40));
 
-        lblDonorId.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        lblDonorId.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lblDonorId.setText("Donor  Id");
         jPanel1.add(lblDonorId, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 90, 20));
 
-        lblGender.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lblGender.setText("Gender");
         jPanel1.add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 100, 30));
 
-        lblemail.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        lblemail.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lblemail.setText("Email");
         jPanel1.add(lblemail, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 70, 20));
 
-        lblphoneno.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        lblphoneno.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lblphoneno.setText("Phone Number");
         jPanel1.add(lblphoneno, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 130, -1));
 
@@ -207,7 +202,7 @@ public class donorRegistration extends javax.swing.JFrame {
         DonorRegistration.setText("Donor Registration Form");
         jPanel1.add(DonorRegistration, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 270, 40));
 
-        lblAddress.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        lblAddress.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lblAddress.setText("Address");
         jPanel1.add(lblAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 70, 20));
 
@@ -215,16 +210,16 @@ public class donorRegistration extends javax.swing.JFrame {
         rbtnFemale.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         rbtnFemale.setText("Female");
         rbtnFemale.setActionCommand("");
-        jPanel1.add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 290, 100, 40));
+        jPanel1.add(rbtnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 100, 40));
 
         buttonGroup1.add(rbtnMale);
         rbtnMale.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         rbtnMale.setText("Male");
         rbtnMale.setActionCommand("");
-        jPanel1.add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 80, -1));
+        jPanel1.add(rbtnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 80, -1));
 
         btnback.setBackground(new java.awt.Color(204, 204, 204));
-        btnback.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        btnback.setFont(new java.awt.Font("Yu Gothic Medium", 1, 12)); // NOI18N
         btnback.setForeground(new java.awt.Color(0, 51, 102));
         btnback.setText("Back");
         btnback.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -243,7 +238,7 @@ public class donorRegistration extends javax.swing.JFrame {
         jPanel1.add(txtPhoneNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 270, 30));
         jPanel1.add(txtDonorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 270, 30));
 
-        lblDonorName.setFont(new java.awt.Font("Times New Roman", 0, 20)); // NOI18N
+        lblDonorName.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         lblDonorName.setText("Name");
         jPanel1.add(lblDonorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 70, 20));
 
@@ -306,8 +301,9 @@ public class donorRegistration extends javax.swing.JFrame {
         });
         jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 350, 90, 30));
 
-        bakgroundpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/donation-money-vector-flat-illustration.jpg"))); // NOI18N
-        jPanel1.add(bakgroundpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-450, -60, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1000033490.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
@@ -511,7 +507,6 @@ public class donorRegistration extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DonorRegistration;
-    private javax.swing.JLabel bakgroundpic;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnReset;
@@ -525,6 +520,7 @@ public class donorRegistration extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup6;
     private javax.swing.ButtonGroup buttonGroup7;
     private javax.swing.ButtonGroup buttonGroup8;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddress;

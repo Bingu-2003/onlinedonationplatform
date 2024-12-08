@@ -38,13 +38,27 @@ GROUP BY
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="108" splitType="Stretch">
 			<staticText>
-				<reportElement x="115" y="0" width="315" height="70" uuid="d7e9681c-8bc0-4d07-9841-32b6a39c6406"/>
-				<textElement>
-					<font fontName="Serif" size="36" isBold="true"/>
+				<reportElement x="55" y="32" width="438" height="52" uuid="d7e9681c-8bc0-4d07-9841-32b6a39c6406"/>
+				<box>
+					<pen lineStyle="Solid" lineColor="#000066"/>
+					<topPen lineStyle="Solid" lineColor="#000066"/>
+					<leftPen lineStyle="Solid" lineColor="#000066"/>
+					<bottomPen lineStyle="Solid" lineColor="#000066"/>
+					<rightPen lineStyle="Solid" lineColor="#000066"/>
+				</box>
+				<textElement textAlignment="Justified">
+					<font fontName="Serif" size="36" isBold="true" isUnderline="false"/>
 				</textElement>
-				<text><![CDATA[   Campaign Report]]></text>
+				<text><![CDATA[    Annual Campaign Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="12" width="110" height="20" forecolor="#000066" uuid="25481f88-eeee-47a8-bb6d-a15765f475e4"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CharityCeylon]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -52,28 +66,71 @@ GROUP BY
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="18" width="149" height="25" uuid="b208017c-50e8-45f1-9eff-dfed6d8cf48e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Campaign Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="149" y="18" width="62" height="25" uuid="b1802c50-f37d-4327-b260-9832f8be291c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="222" y="18" width="69" height="25" uuid="4237876f-4513-4aee-8142-fd685f76a06a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="310" y="18" width="76" height="25" uuid="27f462d0-9e5f-41ba-b9c8-ca9019110803"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Target Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="396" y="18" width="84" height="25" uuid="e87eaff6-85c7-4410-9ad8-bf9fe10c6b6e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Donation Amount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="493" y="18" width="51" height="25" uuid="3cbd46d1-cb9e-45b7-b07e-51a6a02dafb2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Donations]]></text>
+			</staticText>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="28" splitType="Stretch">
 			<textField>
-				<reportElement x="506" y="0" width="49" height="20" uuid="d02decad-5c80-4947-b2a4-9ecb7a5c9a46"/>
+				<reportElement x="506" y="0" width="28" height="20" uuid="d02decad-5c80-4947-b2a4-9ecb7a5c9a46"/>
 				<textFieldExpression><![CDATA[$F{number_of_donations}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="406" y="0" width="100" height="20" uuid="a0eceb60-5a82-4764-8874-436aed2a1723"/>
+				<reportElement x="406" y="0" width="68" height="20" uuid="a0eceb60-5a82-4764-8874-436aed2a1723"/>
 				<textFieldExpression><![CDATA[$F{total_donations}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="306" y="0" width="100" height="20" uuid="43a5511d-9d2c-4b8b-9896-04da2163da70"/>
+				<reportElement x="321" y="0" width="55" height="20" uuid="43a5511d-9d2c-4b8b-9896-04da2163da70"/>
 				<textFieldExpression><![CDATA[$F{target_amount}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="222" y="0" width="84" height="20" uuid="704fa50b-920a-4199-b10f-a6ea43fe203d"/>
+				<reportElement x="222" y="0" width="69" height="20" uuid="704fa50b-920a-4199-b10f-a6ea43fe203d"/>
 				<textFieldExpression><![CDATA[$F{end_date}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="149" y="0" width="73" height="20" uuid="ec334695-0d48-4070-bc8c-5c03fae9be97"/>
+				<reportElement x="149" y="0" width="62" height="20" uuid="ec334695-0d48-4070-bc8c-5c03fae9be97"/>
 				<textFieldExpression><![CDATA[$F{start_date}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -83,10 +140,58 @@ GROUP BY
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch"/>
+		<band height="45" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="5" width="100" height="20" uuid="cca9fbae-0b7e-490d-918f-b0d003d2ab55"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date            Time]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement x="0" y="25" width="100" height="20" uuid="b173f2cb-7654-4230-a65a-9c4992773165"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="118" splitType="Stretch">
+			<staticText>
+				<reportElement x="222" y="0" width="99" height="28" forecolor="#000066" uuid="5c5f48dd-55ca-4e1a-9de8-622a124bc351"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CharityCeylon]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="128" y="28" width="314" height="28" forecolor="#000066" uuid="0ada74fb-96d3-4c6f-ae0e-d99bf557d111"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NO.8A, New Shopping Complex,Thalawathugoda,Kottawa.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="291" y="56" width="224" height="28" forecolor="#000066" uuid="b90a137e-aad1-4e97-9bce-d0ef2b8a9dea"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[email  charityceylon34@gmail.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="56" width="218" height="28" forecolor="#000066" uuid="7d60d57b-7ddc-41df-af71-9ae98b59f8f6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Tel  +94 7634896546 /  + 94 754257436]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="182" y="84" width="224" height="28" forecolor="#000066" uuid="543fd0fb-a078-42a1-934f-bc54087393e5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[website www.chairtyceylon.com]]></text>
+			</staticText>
+		</band>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>

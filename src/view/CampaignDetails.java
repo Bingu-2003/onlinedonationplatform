@@ -4,6 +4,7 @@
  */
 package view;
 import controller.*;
+import model.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
@@ -23,42 +24,39 @@ public class CampaignDetails extends javax.swing.JFrame {
     }
 
      private void loadNextCampaignId() {
-    try {
-       
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
+     
         
-       
-        String sql = "SELECT MAX(campaign_id) FROM Campaign";
-        Statement stmt = conn.createStatement();
-          ResultSet rs = stmt.executeQuery(sql);
+        try {
+            CCampaignDetails loadId = new CCampaignDetails ();
+         int nextId = loadId.getNextCampaignId();
+        txtCampaignId.setText(String.valueOf(nextId));
         
-      
-        if (rs.next()) {
-            int nextProjectId = rs.getInt(1) + 1; 
-            txtCampaignId.setText(String.valueOf(nextProjectId)); 
-        } else {
-           
-            txtCampaignId.setText("1");
+        } catch (Exception e) {
+          JOptionPane.showMessageDialog(null, "Error: " + e.getMessage());  
         }
         
-       
-        rs.close();
-        stmt.close();
-        conn.close();
         
-    } catch (SQLException ex) {
-        
-        JOptionPane.showMessageDialog(null, "Error: " + ex.getMessage());
-    }}
+   }
     
     public void loadTable()
     {
     try{
-         Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
+          Connection conn = DBConnection.createDBConnection();
     String sql= "SELECT * FROM Campaign";
   PreparedStatement pst = conn.prepareStatement(sql);
      ResultSet rs= pst.executeQuery();
    tableCampaign.setModel(DbUtils.resultSetToTableModel(rs));
+   
+   tableCampaign.getColumnModel().getColumn(0).setHeaderValue("Campaign ID");
+        tableCampaign.getColumnModel().getColumn(1).setHeaderValue("Campaign Name");
+        tableCampaign.getColumnModel().getColumn(2).setHeaderValue("Category");
+        tableCampaign.getColumnModel().getColumn(3).setHeaderValue("Start Date");
+        tableCampaign.getColumnModel().getColumn(4).setHeaderValue("End Date");
+        tableCampaign.getColumnModel().getColumn(5).setHeaderValue("Target Amount");
+        tableCampaign.getColumnModel().getColumn(6).setHeaderValue("Description");
+
+        
+        tableCampaign.getTableHeader().repaint();
     }
     catch(Exception e)
     {
@@ -82,7 +80,7 @@ public class CampaignDetails extends javax.swing.JFrame {
         txtCampaignName.setText(campaign_name);
          cmbCategory.setSelectedItem(category);
       try {
-        // Convert String to Date for JDateChooser
+       
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");    
         txtStartDate.setDate(sdf.parse(start_date));                
         txtEndDate.setDate(sdf.parse(end_date));                     
@@ -96,7 +94,8 @@ public class CampaignDetails extends javax.swing.JFrame {
     {
     String search=txtSearch.getText();
         try {
-             Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:/Donation", "root", "");
+            
+              Connection conn = DBConnection.createDBConnection();
             String sql= "SELECT * FROM Campaign WHERE campaign_name LIKE '%"+search+"%' OR campaign_id LIKE '%"+search+"%'";
             PreparedStatement pst = conn.prepareStatement(sql);
            ResultSet rs= pst.executeQuery();
@@ -141,31 +140,32 @@ public class CampaignDetails extends javax.swing.JFrame {
         lbltargetamount = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtdescription = new javax.swing.JTextArea();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tableCampaign = new javax.swing.JTable();
-        btnDelete = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
-        lblcampaigndetails = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        btnDelete = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableCampaign = new javax.swing.JTable();
+        lblcharityceylon = new javax.swing.JLabel();
+        lblcampaigndetails = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Campaigns");
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel1.setBackground(java.awt.SystemColor.activeCaption);
         jPanel1.setForeground(new java.awt.Color(153, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Search", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Serif", 1, 16), new java.awt.Color(51, 51, 51))); // NOI18N
 
-        txtSearch.setBackground(new java.awt.Color(102, 102, 102));
+        txtSearch.setBackground(java.awt.SystemColor.activeCaption);
         txtSearch.setForeground(new java.awt.Color(255, 255, 255));
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -178,9 +178,9 @@ public class CampaignDetails extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,123 +190,127 @@ public class CampaignDetails extends javax.swing.JFrame {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 290, -1));
+
         lblid.setBackground(new java.awt.Color(51, 51, 51));
-        lblid.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lblid.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblid.setForeground(new java.awt.Color(51, 51, 51));
         lblid.setText("Campaign Id");
+        jPanel1.add(lblid, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel1.add(txtCampaignName, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 232, 292, 30));
 
         lblcategory.setBackground(new java.awt.Color(51, 51, 51));
-        lblcategory.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lblcategory.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblcategory.setForeground(new java.awt.Color(51, 51, 51));
         lblcategory.setText("Category");
+        jPanel1.add(lblcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
+
+        txtCampaignId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCampaignIdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtCampaignId, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 142, 292, 30));
 
         lblname.setBackground(new java.awt.Color(51, 51, 51));
-        lblname.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lblname.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblname.setForeground(new java.awt.Color(51, 51, 51));
         lblname.setText("Campaign Name");
+        jPanel1.add(lblname, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         cmbCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Education", "Disaster", "HealthCare", "Other" }));
+        jPanel1.add(cmbCategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 322, 292, 30));
 
         endDate.setBackground(new java.awt.Color(51, 51, 51));
-        endDate.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        endDate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         endDate.setForeground(new java.awt.Color(51, 51, 51));
         endDate.setText("End Date");
+        jPanel1.add(endDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, -1, -1));
 
         startDate.setBackground(new java.awt.Color(51, 51, 51));
-        startDate.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        startDate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         startDate.setForeground(new java.awt.Color(51, 51, 51));
         startDate.setText("Start Date");
+        jPanel1.add(startDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, -1, -1));
+        jPanel1.add(txtStartDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 142, 137, 30));
+        jPanel1.add(txtEndDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 142, 130, 30));
 
         lbldescription.setBackground(new java.awt.Color(51, 51, 51));
-        lbldescription.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbldescription.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lbldescription.setForeground(new java.awt.Color(51, 51, 51));
         lbldescription.setText("Description");
+        jPanel1.add(lbldescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 300, -1, -1));
+        jPanel1.add(txtTargetAmount, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 232, 350, 30));
 
         lbltargetamount.setBackground(new java.awt.Color(51, 51, 51));
-        lbltargetamount.setFont(new java.awt.Font("Times New Roman", 0, 16)); // NOI18N
+        lbltargetamount.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lbltargetamount.setForeground(new java.awt.Color(51, 51, 51));
         lbltargetamount.setText("Target Amount");
+        jPanel1.add(lbltargetamount, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 210, -1, -1));
 
         txtdescription.setColumns(20);
         txtdescription.setRows(5);
         jScrollPane1.setViewportView(txtdescription);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbltargetamount)
-                    .addComponent(lbldescription)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblname)
-                                .addComponent(lblcategory)
-                                .addComponent(lblid)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCampaignName)
-                                .addComponent(txtCampaignId)
-                                .addComponent(cmbCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(52, 52, 52)
-                                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGap(29, 29, 29))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(startDate)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(endDate)
-                            .addGap(68, 68, 68)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                        .addComponent(txtTargetAmount, javax.swing.GroupLayout.Alignment.LEADING))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(lblid)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCampaignId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14)
-                .addComponent(lblname)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtCampaignName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblcategory)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbCategory, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(startDate)
-                    .addComponent(endDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addComponent(lbltargetamount)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTargetAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(lbldescription)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(61, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 320, 350, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 630));
+        btnAdd.setBackground(new java.awt.Color(0, 0, 102));
+        btnAdd.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(255, 255, 255));
+        btnAdd.setText("ADD");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(153, 153, 153));
+        btnUpdate.setBackground(new java.awt.Color(0, 0, 102));
+        btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setText("UPDATE");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/360_F_500945815_xyDKv3bidsGim09jcO7llyKnokhe4XkD.jpg"))); // NOI18N
-        jLabel8.setText("jLabel8");
+        btnDelete.setBackground(new java.awt.Color(0, 0, 102));
+        btnDelete.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
+        btnDelete.setText("DELETE");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, -1, -1));
 
+        btnBack.setBackground(new java.awt.Color(204, 204, 204));
+        btnBack.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
+        btnBack.setForeground(new java.awt.Color(0, 0, 102));
+        btnBack.setText("Back");
+        btnBack.setBorder(null);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 49, 30));
+
+        btnReset.setBackground(new java.awt.Color(0, 0, 102));
+        btnReset.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
+        btnReset.setForeground(new java.awt.Color(255, 255, 255));
+        btnReset.setText("RESET");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
+
+        tableCampaign.setBackground(java.awt.SystemColor.activeCaption);
         tableCampaign.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -330,117 +334,23 @@ public class CampaignDetails extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tableCampaign);
 
-        btnDelete.setBackground(new java.awt.Color(204, 204, 204));
-        btnDelete.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(0, 0, 102));
-        btnDelete.setText("DELETE");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 800, 120));
 
-        btnAdd.setBackground(new java.awt.Color(204, 204, 204));
-        btnAdd.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(0, 0, 102));
-        btnAdd.setText("ADD");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
+        lblcharityceylon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblcharityceylon.setForeground(new java.awt.Color(0, 0, 153));
+        lblcharityceylon.setText("ChairtyCeylon");
+        jPanel1.add(lblcharityceylon, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 30, -1, -1));
 
-        btnUpdate.setBackground(new java.awt.Color(204, 204, 204));
-        btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(0, 0, 102));
-        btnUpdate.setText("UPDATE");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnReset.setBackground(new java.awt.Color(204, 204, 204));
-        btnReset.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
-        btnReset.setForeground(new java.awt.Color(0, 0, 102));
-        btnReset.setText("RESET");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-
-        lblcampaigndetails.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        lblcampaigndetails.setForeground(new java.awt.Color(0, 0, 102));
+        lblcampaigndetails.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        lblcampaigndetails.setForeground(new java.awt.Color(0, 51, 102));
         lblcampaigndetails.setText("Campaign Details");
+        jPanel1.add(lblcampaigndetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(0, 0, 153));
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 102));
-        jLabel1.setText("CharityCeylon");
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1000033490.jpg"))); // NOI18N
+        jLabel3.setText("jLabel1");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, -1, -1));
 
-        btnBack.setBackground(new java.awt.Color(204, 204, 204));
-        btnBack.setFont(new java.awt.Font("Segoe UI Emoji", 0, 14)); // NOI18N
-        btnBack.setForeground(new java.awt.Color(0, 0, 102));
-        btnBack.setText("Back");
-        btnBack.setBorder(null);
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(215, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(186, 186, 186))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addComponent(lblcampaigndetails)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(btnAdd)
-                .addGap(18, 18, 18)
-                .addComponent(btnUpdate)
-                .addGap(18, 18, 18)
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnReset)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblcampaigndetails)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnReset)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22))
-        );
-
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, 490, 630));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -614,6 +524,10 @@ public class CampaignDetails extends javax.swing.JFrame {
            tableData();
     }//GEN-LAST:event_tableCampaignMouseClicked
 
+    private void txtCampaignIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampaignIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCampaignIdActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -657,16 +571,15 @@ public class CampaignDetails extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbCategory;
     private javax.swing.JLabel endDate;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblcampaigndetails;
     private javax.swing.JLabel lblcategory;
+    private javax.swing.JLabel lblcharityceylon;
     private javax.swing.JLabel lbldescription;
     private javax.swing.JLabel lblid;
     private javax.swing.JLabel lblname;

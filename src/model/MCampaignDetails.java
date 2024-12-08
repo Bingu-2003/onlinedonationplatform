@@ -58,6 +58,23 @@ public class MCampaignDetails {
         }
     }
      
-    
+    public int getNextCampaignId() {
+        int nextId = 1;
+        try {
+            
+            Statement st = DBConnection.createDBConnection().createStatement();
+            ResultSet rs = st.executeQuery("SELECT MAX(campaign_id) AS MaxID FROM Campaign");
+            
+            if (rs.next()) {
+                int maxId = rs.getInt("MaxID");
+                nextId = maxId + 1; 
+            }
+            
+        } catch (SQLException ex) {
+            System.err.println("Error fetching next Campaign ID: " + ex.getMessage());
+        }
+        
+        return nextId;
+    }
     
 }

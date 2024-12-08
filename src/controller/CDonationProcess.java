@@ -7,9 +7,9 @@ import model.*;
 
 public class CDonationProcess {
     
-    public void doneDonation(int donor_id,String donor_name,String campaign_name,Double donation_amount,String payment_method, String date)
+    public void doneDonation(int donor_id,String donor_name,String campaign_name,Double donation_amount,String payment_method,String date)
    {
-       MDonationProcess doneD = new MDonationProcess();
-       doneD.doneDonation(donor_id, donor_name,campaign_name,donation_amount,payment_method,date);
+       MDonationProcess done = new MDonationProcess();
+       done.doneDonation(donor_id, donor_name,campaign_name,donation_amount,payment_method,date);
    } 
 }
