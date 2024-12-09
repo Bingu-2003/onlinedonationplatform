@@ -32,7 +32,10 @@ public class Dashboard extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DashBoard");
+        setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setResizable(false);
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(java.awt.SystemColor.activeCaption);
@@ -102,7 +105,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel3.add(btnDonations, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 380, 70));
 
         btnLogout.setBackground(new java.awt.Color(204, 204, 204));
-        btnLogout.setFont(new java.awt.Font("Yu Gothic Medium", 0, 14)); // NOI18N
+        btnLogout.setFont(new java.awt.Font("Yu Gothic Medium", 1, 14)); // NOI18N
         btnLogout.setForeground(new java.awt.Color(0, 51, 102));
         btnLogout.setText("Logout ");
         btnLogout.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -111,7 +114,7 @@ public class Dashboard extends javax.swing.JFrame {
                 btnLogoutActionPerformed(evt);
             }
         });
-        jPanel3.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 530, 70, 40));
+        jPanel3.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 80, 40));
 
         lblcharityceylon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblcharityceylon.setForeground(new java.awt.Color(0, 0, 153));
@@ -120,7 +123,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         backgrounpic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/WhatsApp Image 2024-12-06 at 21.35.53_1fb5e01e.jpg"))); // NOI18N
         backgrounpic.setText("jLabel1");
-        jPanel3.add(backgrounpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-230, -10, -1, -1));
+        jPanel3.add(backgrounpic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-210, 0, -1, -1));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

@@ -35,6 +35,7 @@ public class Report extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reports");
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
@@ -77,7 +78,7 @@ public class Report extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 550, -1, 40));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 550, -1, 40));
 
         reportPanel.setLayout(new java.awt.BorderLayout());
         jPanel1.add(reportPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 780, 390));

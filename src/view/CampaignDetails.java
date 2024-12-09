@@ -155,7 +155,6 @@ public class CampaignDetails extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Campaigns");
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
@@ -263,7 +262,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                 btnAddActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, -1, -1));
+        jPanel1.add(btnAdd, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, -1, -1));
 
         btnUpdate.setBackground(new java.awt.Color(0, 0, 102));
         btnUpdate.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
@@ -274,7 +273,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, -1));
+        jPanel1.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, -1, -1));
 
         btnDelete.setBackground(new java.awt.Color(0, 0, 102));
         btnDelete.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
@@ -285,7 +284,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                 btnDeleteActionPerformed(evt);
             }
         });
-        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, -1, -1));
+        jPanel1.add(btnDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
 
         btnBack.setBackground(new java.awt.Color(204, 204, 204));
         btnBack.setFont(new java.awt.Font("Segoe UI Emoji", 1, 14)); // NOI18N
@@ -297,7 +296,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 550, 49, 30));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 540, 60, 40));
 
         btnReset.setBackground(new java.awt.Color(0, 0, 102));
         btnReset.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
@@ -308,7 +307,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                 btnResetActionPerformed(evt);
             }
         });
-        jPanel1.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, -1));
+        jPanel1.add(btnReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, -1, -1));
 
         tableCampaign.setBackground(java.awt.SystemColor.activeCaption);
         tableCampaign.setModel(new javax.swing.table.DefaultTableModel(
@@ -334,7 +333,7 @@ public class CampaignDetails extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tableCampaign);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 800, 120));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 810, 120));
 
         lblcharityceylon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblcharityceylon.setForeground(new java.awt.Color(0, 0, 153));
@@ -348,7 +347,7 @@ public class CampaignDetails extends javax.swing.JFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1000033490.jpg"))); // NOI18N
         jLabel3.setText("jLabel1");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -20, -1, 640));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 630));
 

@@ -137,6 +137,7 @@ public class donorRegistration extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("DONOR REGISTRATION");
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(java.awt.SystemColor.activeCaption);
@@ -228,7 +229,7 @@ public class donorRegistration extends javax.swing.JFrame {
                 btnbackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 70, 30));
+        jPanel1.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 70, 30));
 
         txtPhoneNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,7 +289,7 @@ public class donorRegistration extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tableDonor);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 400, 800, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 390, 800, 150));
 
         btnDelete.setBackground(new java.awt.Color(0, 51, 102));
         btnDelete.setFont(new java.awt.Font("Verdana Pro Semibold", 1, 12)); // NOI18N
