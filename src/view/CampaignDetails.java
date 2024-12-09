@@ -149,7 +149,7 @@ public class CampaignDetails extends javax.swing.JFrame {
         tableCampaign = new javax.swing.JTable();
         lblcharityceylon = new javax.swing.JLabel();
         lblcampaigndetails = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        bckground = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -296,7 +296,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(649, 540, 60, 40));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 550, 60, 40));
 
         btnReset.setBackground(new java.awt.Color(0, 0, 102));
         btnReset.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
@@ -333,7 +333,7 @@ public class CampaignDetails extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tableCampaign);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 410, 810, 120));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 810, 120));
 
         lblcharityceylon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblcharityceylon.setForeground(new java.awt.Color(0, 0, 153));
@@ -345,9 +345,8 @@ public class CampaignDetails extends javax.swing.JFrame {
         lblcampaigndetails.setText("Campaign Details");
         jPanel1.add(lblcampaigndetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 50, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1000033490.jpg"))); // NOI18N
-        jLabel3.setText("jLabel1");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, -20, -1, 640));
+        bckground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1000033490.jpg"))); // NOI18N
+        jPanel1.add(bckground, new org.netbeans.lib.awtextra.AbsoluteConstraints(-50, -20, -1, 640));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 630));
 
@@ -563,6 +562,7 @@ public class CampaignDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bckground;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnDelete;
@@ -570,7 +570,6 @@ public class CampaignDetails extends javax.swing.JFrame {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JComboBox<String> cmbCategory;
     private javax.swing.JLabel endDate;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

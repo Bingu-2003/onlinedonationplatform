@@ -281,7 +281,7 @@ public class DonationProcess extends javax.swing.JFrame {
               CDonationProcess done = new CDonationProcess (); 
               done.doneDonation(donor_id, donor_name,campaign_name,donation_amount,payment_method,date);
              
-            JOptionPane.showMessageDialog(this, "Donor Registered successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Donation Done successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
 
                  clearForm();
         }
