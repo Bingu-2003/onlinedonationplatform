@@ -166,6 +166,11 @@ public class CampaignDetails extends javax.swing.JFrame {
 
         txtSearch.setBackground(java.awt.SystemColor.activeCaption);
         txtSearch.setForeground(new java.awt.Color(255, 255, 255));
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
+            }
+        });
         txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
@@ -177,9 +182,9 @@ public class CampaignDetails extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
+                .addGap(14, 14, 14)
                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -204,6 +209,7 @@ public class CampaignDetails extends javax.swing.JFrame {
         lblcategory.setText("Category");
         jPanel1.add(lblcategory, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, -1, -1));
 
+        txtCampaignId.setEditable(false);
         txtCampaignId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCampaignIdActionPerformed(evt);
@@ -296,7 +302,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 550, 60, 40));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 550, 60, 40));
 
         btnReset.setBackground(new java.awt.Color(0, 0, 102));
         btnReset.setFont(new java.awt.Font("Sitka Text", 1, 14)); // NOI18N
@@ -333,7 +339,7 @@ public class CampaignDetails extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tableCampaign);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 810, 120));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 810, 120));
 
         lblcharityceylon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblcharityceylon.setForeground(new java.awt.Color(0, 0, 153));
@@ -408,7 +414,7 @@ public class CampaignDetails extends javax.swing.JFrame {
                  
            CCampaignDetails updateC = new  CCampaignDetails();
             updateC.updateCampaign(campaign_id,campaign_name,category,start_date,end_date,target_amount,description);
-            JOptionPane.showMessageDialog(this, "Donor details updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Campaign details updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
             loadTable(); 
             clearForm();
             
@@ -446,7 +452,7 @@ public class CampaignDetails extends javax.swing.JFrame {
         }
 
         String category = cmbCategory.getSelectedItem().toString();
-        if (category.equals("Select Category")) { // Assuming "Select Category" is a placeholder
+        if (category.equals("Select Category")) {
             JOptionPane.showMessageDialog(null, "Please select a category.");
             return;
         }
@@ -525,6 +531,10 @@ public class CampaignDetails extends javax.swing.JFrame {
     private void txtCampaignIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCampaignIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCampaignIdActionPerformed
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     /**
      * @param args the command line arguments

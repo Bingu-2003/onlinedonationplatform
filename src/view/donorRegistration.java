@@ -229,7 +229,7 @@ public class donorRegistration extends javax.swing.JFrame {
                 btnbackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 70, 30));
+        jPanel1.add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 550, 70, 30));
 
         txtPhoneNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

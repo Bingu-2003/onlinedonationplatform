@@ -150,6 +150,8 @@ public class DonationProcess extends javax.swing.JFrame {
         lblDate.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         lblDate.setText("Date");
         getContentPane().add(lblDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 50, 30));
+
+        txtDonorName.setEditable(false);
         getContentPane().add(txtDonorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, 130, 40));
 
         lblCampaignName.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -211,7 +213,7 @@ public class DonationProcess extends javax.swing.JFrame {
                 btnbackActionPerformed(evt);
             }
         });
-        getContentPane().add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 510, 70, 40));
+        getContentPane().add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, 70, 40));
 
         backfroundPhoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2148568055.jpg"))); // NOI18N
         backfroundPhoto.setText("jLabel1");
@@ -228,7 +230,7 @@ public class DonationProcess extends javax.swing.JFrame {
     }//GEN-LAST:event_btnbackActionPerformed
 
     private void btnDoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoneActionPerformed
-         
+       
        int donor_id;
     
         donor_id = Integer.parseInt(txtDonorId.getText());
@@ -274,7 +276,10 @@ public class DonationProcess extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Date is required.", "Validation Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        date = sdf.format(txtDate.getDate());
+        
+        System.out.println("Formatted Date: " + date);
         
          try {
                

@@ -114,7 +114,7 @@ public class Dashboard extends javax.swing.JFrame {
                 btnLogoutActionPerformed(evt);
             }
         });
-        jPanel3.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 520, 80, 40));
+        jPanel3.add(btnLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 520, 80, 40));
 
         lblcharityceylon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblcharityceylon.setForeground(new java.awt.Color(0, 0, 153));
